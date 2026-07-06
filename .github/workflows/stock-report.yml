@@ -1,0 +1,70 @@
+name: Generate Stock Reports
+
+on:
+  schedule:
+    - cron: "20 0 * * 1-5"
+    - cron: "30 3 * * 1-5"
+    - cron: "40 6 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      report_type:
+        description: "Report type"
+        required: false
+        default: "post_market"
+        type: choice
+        options:
+          - pre_market
+          - intraday
+          - post_market
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Determine report type
+        id: report_type
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "type=${{ github.event.inputs.report_type }}" >> "$GITHUB_OUTPUT"
+          else
+            HOUR=$(date -u +%H)
+            MIN=$(date -u +%M)
+            if [ "$HOUR:$MIN" = "00:20" ]; then
+              echo "type=pre_market" >> "$GITHUB_OUTPUT"
+            elif [ "$HOUR:$MIN" = "03:30" ]; then
+              echo "type=intraday" >> "$GITHUB_OUTPUT"
+            else
+              echo "type=post_market" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Generate report
+        run: npm run generate-report -- ${{ steps.report_type.outputs.type }}
+
+      - name: Commit report files
+        shell: bash
+        run: |
+          git config user.name "simi-stock-bot"
+          git config user.email "simi-stock-bot@users.noreply.github.com"
+          git add public/reports/*.json public/reports/history/*.json
+          git commit -m "Update stock report: ${{ steps.report_type.outputs.type }}" || echo "No report changes"
+          git push

@@ -1,0 +1,30 @@
+{
+  "name": "simi-stock-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "fetch-tw-stocks": "tsx scripts/fetch-tw-stocks.ts",
+    "generate-report": "tsx scripts/generate-report.ts",
+    "generate-report:pre": "tsx scripts/generate-report.ts pre_market",
+    "generate-report:intraday": "tsx scripts/generate-report.ts intraday",
+    "generate-report:post": "tsx scripts/generate-report.ts post_market"
+  },
+  "dependencies": {
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.9",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^9.31.0",
+    "eslint-config-next": "^16.2.10",
+    "tsx": "^4.23.0",
+    "typescript": "5.8.3"
+  }
+}
