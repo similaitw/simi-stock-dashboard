@@ -128,10 +128,28 @@ export default function HomePage() {
                 <p className="eyebrow">K-Line</p>
                 <h2 id="cards-title">各檔 K 線</h2>
               </div>
-              <div className="stock-card-grid">
+              <nav className="stock-anchor-nav" aria-label="股票快速跳轉">
                 {reports.latest.items.map((item) => (
-                  <StockCard item={item} key={item.symbol} />
+                  <a href={`#stock-${item.symbol}`} key={item.symbol}>
+                    {item.symbol}
+                    <span>{item.name}</span>
+                  </a>
                 ))}
+              </nav>
+              <div className="stock-card-grid">
+                {reports.latest.items.map((item, index, items) => {
+                  const previous = items[index - 1] ?? items.at(-1);
+                  const next = items[index + 1] ?? items[0];
+
+                  return (
+                    <StockCard
+                      item={item}
+                      key={item.symbol}
+                      next={next}
+                      previous={previous}
+                    />
+                  );
+                })}
               </div>
             </section>
           )}

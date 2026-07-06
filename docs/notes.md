@@ -190,3 +190,12 @@ npm run generate-report -- post_market
 - `post_market`
 
 流程會執行 `npm ci`、`npm run generate-report -- report_type`，並自動 commit `public/reports/*.json` 與 `public/reports/history/*.json`。
+
+### 手機操作優化
+
+已改善手機瀏覽：
+
+- 各檔 K 線頁加入股票錨點快速跳轉
+- 每檔 `StockCard` 加入上一檔 / 回錨點 / 下一檔
+- K 線圖加入縮小 / 重設 / 放大控制
+- 手機版 K 線圖高度加大，卡片底部導覽固定在視窗底部附近，方便單手操作

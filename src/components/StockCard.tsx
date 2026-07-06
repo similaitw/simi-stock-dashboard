@@ -3,11 +3,13 @@ import type { StockReportItem } from "@/lib/reportTypes";
 
 interface StockCardProps {
   item: StockReportItem;
+  next?: StockReportItem;
+  previous?: StockReportItem;
 }
 
-export default function StockCard({ item }: StockCardProps) {
+export default function StockCard({ item, next, previous }: StockCardProps) {
   return (
-    <article className="stock-card" data-signal={item.signal}>
+    <article className="stock-card" data-signal={item.signal} id={`stock-${item.symbol}`}>
       <div className="stock-card-head">
         <div>
           <p>{item.symbol}</p>
@@ -41,6 +43,24 @@ export default function StockCard({ item }: StockCardProps) {
 
       <p className="stock-action">{item.action}</p>
       <p className="stock-reason">{item.reason}</p>
+
+      {(previous || next) && (
+        <nav className="stock-card-nav" aria-label={`${item.symbol} 檔案切換`}>
+          {previous && (
+            <a href={`#stock-${previous.symbol}`}>
+              上一檔
+              <span>{previous.symbol}</span>
+            </a>
+          )}
+          <a href="#cards-title">回到錨點</a>
+          {next && (
+            <a href={`#stock-${next.symbol}`}>
+              下一檔
+              <span>{next.symbol}</span>
+            </a>
+          )}
+        </nav>
+      )}
     </article>
   );
 }

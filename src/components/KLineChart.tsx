@@ -25,6 +25,7 @@ const volumeBottom = 246;
 
 export default function KLineChart({ item }: KLineChartProps) {
   const [range, setRange] = useState<RangeDays>(60);
+  const [zoom, setZoom] = useState(1);
   const allPoints = useMemo(() => {
     const prices = item.prices?.length ? item.prices : createFallbackPrices(item);
     return attachMovingAverages(prices);
@@ -40,6 +41,8 @@ export default function KLineChart({ item }: KLineChartProps) {
   const maxVolume = Math.max(...points.map((point) => point.volume), 1);
   const candleSlot = chartWidth / points.length;
   const candleWidth = Math.max(2, Math.min(7, candleSlot * 0.58));
+  const visibleWidth = chartWidth / zoom;
+  const viewBoxX = chartWidth - visibleWidth;
 
   return (
     <div className="kline-chart" aria-label={`${item.symbol} K 線圖`}>
@@ -62,10 +65,36 @@ export default function KLineChart({ item }: KLineChartProps) {
         </div>
       </div>
 
+      <div className="zoom-control" aria-label="K 線放大縮小">
+        <button
+          aria-label="縮小 K 線圖"
+          disabled={zoom === 1}
+          onClick={() => setZoom((value) => Math.max(1, roundZoom(value - 0.35)))}
+          type="button"
+        >
+          -
+        </button>
+        <button
+          aria-label="重設 K 線圖縮放"
+          onClick={() => setZoom(1)}
+          type="button"
+        >
+          {Math.round(zoom * 100)}%
+        </button>
+        <button
+          aria-label="放大 K 線圖"
+          disabled={zoom >= 2.05}
+          onClick={() => setZoom((value) => Math.min(2.05, roundZoom(value + 0.35)))}
+          type="button"
+        >
+          +
+        </button>
+      </div>
+
       <svg
         className="chart-svg"
         role="img"
-        viewBox={`0 0 ${chartWidth} ${chartHeight}`}
+        viewBox={`${viewBoxX} 0 ${visibleWidth} ${chartHeight}`}
       >
         <title>{`${item.symbol} 日 K 線、成交量與 MA20 / MA60 / MA120`}</title>
         <line className="chart-axis" x1="0" x2={chartWidth} y1={priceBottom} y2={priceBottom} />
@@ -265,5 +294,9 @@ function createDate(index: number): string {
 }
 
 function round(value: number): number {
+  return Math.round(value * 100) / 100;
+}
+
+function roundZoom(value: number): number {
   return Math.round(value * 100) / 100;
 }
