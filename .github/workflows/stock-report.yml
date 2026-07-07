@@ -68,3 +68,4 @@ jobs:
           git add public/reports/*.json public/reports/history/*.json
           git commit -m "Update stock report: ${{ steps.report_type.outputs.type }}" || echo "No report changes"
           git push
+
