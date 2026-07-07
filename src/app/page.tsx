@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Disclaimer from "@/components/Disclaimer";
 import IntradayPanel from "@/components/IntradayPanel";
+import ManualReportPanel from "@/components/ManualReportPanel";
 import MarketSummary from "@/components/MarketSummary";
 import PostMarketPanel from "@/components/PostMarketPanel";
 import PreMarketPanel from "@/components/PreMarketPanel";
@@ -111,6 +112,7 @@ export default function HomePage() {
 
           {activeTab === "overview" && (
             <>
+              <ManualReportPanel />
               <MarketSummary report={reports.latest} />
               <section className="section-block" aria-labelledby="table-title">
                 <div className="section-heading">

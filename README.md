@@ -54,6 +54,22 @@ npm run generate-report -- <report_type>
 - `intraday`
 - `post_market`
 
+## 網頁手動更新
+
+首頁提供手動更新按鈕，可從 Vercel API 觸發 GitHub Actions `workflow_dispatch`。
+
+Vercel 需要設定環境變數：
+
+- `GITHUB_ACTIONS_TOKEN`：GitHub Personal Access Token，需可觸發 Actions workflow。
+- `MANUAL_TRIGGER_KEY`：自訂手動更新密碼，網頁按鈕會要求輸入。
+
+可選環境變數：
+
+- `GITHUB_REPOSITORY_NAME`：預設 `similaitw/simi-stock-dashboard`
+- `GITHUB_WORKFLOW_REF`：預設 `master`
+
+按下手動更新後，GitHub Actions 會產生報告、commit `public/reports/*.json`，Vercel 會因 GitHub commit 自動重新部署。
+
 ## 本地開發
 
 ```bash

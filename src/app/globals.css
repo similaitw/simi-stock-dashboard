@@ -147,6 +147,93 @@ h3 {
   margin-top: 14px;
 }
 
+.manual-report-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.75fr) minmax(280px, 1fr);
+  gap: 12px;
+  align-items: end;
+  margin-top: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.manual-report-panel h2 {
+  margin-bottom: 8px;
+}
+
+.manual-report-panel p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.manual-key-field {
+  display: grid;
+  gap: 8px;
+}
+
+.manual-key-field span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.manual-key-field input {
+  min-height: 42px;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 12px;
+  color: var(--text);
+  background: var(--panel-soft);
+}
+
+.manual-button-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.manual-button-grid button {
+  min-height: 54px;
+  border: 1px solid rgba(88, 166, 255, 0.35);
+  border-radius: 8px;
+  color: var(--text);
+  background: rgba(88, 166, 255, 0.1);
+  cursor: pointer;
+}
+
+.manual-button-grid button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.manual-button-grid strong,
+.manual-button-grid span {
+  display: block;
+}
+
+.manual-button-grid span {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.manual-status {
+  grid-column: 1 / -1;
+  padding: 10px 12px;
+  border: 1px solid rgba(88, 166, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+.manual-status.error {
+  border-color: rgba(245, 196, 81, 0.4);
+  background: rgba(245, 196, 81, 0.1);
+}
+
 .summary-card,
 .stock-card,
 .empty-state {
@@ -962,6 +1049,10 @@ h3 {
   .rules-layout {
     grid-template-columns: 1fr;
   }
+
+  .manual-report-panel {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -987,6 +1078,10 @@ h3 {
   .monitor-grid,
   .rule-stock-grid,
   .rule-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-button-grid {
     grid-template-columns: 1fr;
   }
 

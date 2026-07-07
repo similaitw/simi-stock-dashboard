@@ -199,3 +199,17 @@ npm run generate-report -- post_market
 - 每檔 `StockCard` 加入上一檔 / 回錨點 / 下一檔
 - K 線圖加入縮小 / 重設 / 放大控制
 - 手機版 K 線圖高度加大，卡片底部導覽固定在視窗底部附近，方便單手操作
+
+### 自動更新與網頁手動更新
+
+已加入網頁手動更新設計：
+
+- `src/app/api/run-report/route.ts`
+- `src/components/ManualReportPanel.tsx`
+
+自動更新仍由 GitHub Actions schedule 執行。手動更新由首頁按鈕呼叫 Vercel API route，再用 Vercel 環境變數中的 `GITHUB_ACTIONS_TOKEN` 觸發 GitHub Actions `workflow_dispatch`。
+
+Vercel 需要設定：
+
+- `GITHUB_ACTIONS_TOKEN`
+- `MANUAL_TRIGGER_KEY`
