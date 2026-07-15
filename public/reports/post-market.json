@@ -1,6 +1,6 @@
 {
   "type": "post_market",
-  "date": "2026-07-14",
+  "date": "2026-07-15",
   "time": "14:40",
   "timezone": "Asia/Taipei",
   "marketState": "修正",
@@ -6985,8 +6985,8 @@
       "ma20": 2426.25,
       "ma60": 2305.5,
       "ma120": 2076.67,
-      "volume": 40558055,
-      "volumeMA20": 38846113.15,
+      "volume": 42857055,
+      "volumeMA20": 38961063.15,
       "kline": "長下影",
       "score": 2,
       "signal": "正常",
@@ -8497,7 +8497,7 @@
           "high": 2430,
           "low": 2390,
           "close": 2420,
-          "volume": 40558055
+          "volume": 42857055
         }
       ]
     },
@@ -10059,5 +10059,5 @@
     "跌破季線不攤平"
   ],
   "dataStatus": "ok",
-  "generatedAt": "2026-07-14T08:40:05.963Z"
+  "generatedAt": "2026-07-15T03:34:59.767Z"
 }
