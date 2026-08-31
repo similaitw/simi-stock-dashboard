@@ -10987,7 +10987,7 @@
       "score": 0,
       "signal": "修正",
       "action": "資料不足，先觀察",
-      "reason": "fetch failed",
+      "reason": "TWSE returned no usable daily prices.",
       "rules": [
         "只小部位",
         "不攤平",
@@ -11003,5 +11003,5 @@
     "跌破季線不攤平"
   ],
   "dataStatus": "ok",
-  "generatedAt": "2026-08-31T10:00:01.026Z"
+  "generatedAt": "2026-08-31T14:21:58.366Z"
 }
