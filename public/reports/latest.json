@@ -3079,8 +3079,8 @@
       "ma20": 31.34,
       "ma60": 30.22,
       "ma120": 27.76,
-      "volume": 106970925,
-      "volumeMA20": 72509187.65,
+      "volume": 107470925,
+      "volumeMA20": 72534187.65,
       "kline": "長黑 K",
       "score": 1,
       "signal": "修正",
@@ -4591,7 +4591,7 @@
           "high": 32.89,
           "low": 32.66,
           "close": 32.71,
-          "volume": 106970925
+          "volume": 107470925
         }
       ]
     },
@@ -7305,8 +7305,8 @@
       "ma20": 2407,
       "ma60": 2396.92,
       "ma120": 2262.67,
-      "volume": 28440697,
-      "volumeMA20": 20682237.25,
+      "volume": 28931697,
+      "volumeMA20": 20706787.25,
       "kline": "十字長上影",
       "score": 3,
       "signal": "正常",
@@ -8817,7 +8817,7 @@
           "high": 2505,
           "low": 2460,
           "close": 2470,
-          "volume": 28440697
+          "volume": 28931697
         }
       ]
     },
@@ -10363,7 +10363,7 @@
       "score": 0,
       "signal": "修正",
       "action": "資料不足，先觀察",
-      "reason": "TWSE returned no usable daily prices.",
+      "reason": "fetch failed",
       "rules": [
         "只小部位",
         "不攤平",
@@ -10379,5 +10379,5 @@
     "跌破季線不攤平"
   ],
   "dataStatus": "ok",
-  "generatedAt": "2026-09-08T08:15:57.435Z"
+  "generatedAt": "2026-09-08T11:42:01.890Z"
 }
