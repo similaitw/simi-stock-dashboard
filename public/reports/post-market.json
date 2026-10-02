@@ -1,6 +1,6 @@
 {
   "type": "post_market",
-  "date": "2026-10-01",
+  "date": "2026-10-02",
   "time": "14:40",
   "timezone": "Asia/Taipei",
   "marketState": "正常",
@@ -10163,5 +10163,5 @@
     "跌破季線不攤平"
   ],
   "dataStatus": "ok",
-  "generatedAt": "2026-10-01T13:50:05.163Z"
+  "generatedAt": "2026-10-02T05:37:43.143Z"
 }
